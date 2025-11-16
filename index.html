@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Interactive Web Mapping</title>
+    <title>Interactive Covid 19 Web Mapping</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.5.0/mapbox-gl.js"></script>
@@ -96,7 +96,7 @@ const map = new mapboxgl.Map({
 );
 
         async function geojsonFetch() { 
-            let response = await fetch('wa-covid-data-102521.geojson');
+            let response = await fetch('assets/wa-covid-data-102521.geojson');
             let lab4data = await response.json();
 
             map.on('load', function loadingData() {

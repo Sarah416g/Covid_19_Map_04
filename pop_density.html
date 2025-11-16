@@ -96,7 +96,7 @@ const map = new mapboxgl.Map({
 );
 
         async function geojsonFetch() { 
-            let response = await fetch('state_data.geojson');
+            let response = await fetch('assets/state_data.geojson');
             let stateData = await response.json();
 
             map.on('load', function loadingData() {
