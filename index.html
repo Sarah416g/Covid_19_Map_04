@@ -90,13 +90,13 @@ p {
 const map = new mapboxgl.Map({
         container: 'map', // container ID
         style: 'mapbox://styles/mapbox/light-v11', // style URL
-        zoom: 3, // starting zoom
-        center: [-100, 40] // starting center
+        zoom: 6, // starting zoom
+        center: [-120, 47] // starting center
     }
 );
 
         async function geojsonFetch() { 
-            let response = await fetch('wa-covid-data-102521.geojsonn');
+            let response = await fetch('wa-covid-data-102521.geojson');
             let lab4data = await response.json();
 
             map.on('load', function loadingData() {
@@ -113,50 +113,50 @@ const map = new mapboxgl.Map({
                         'fill-color': [
                             'step',
                             ['get', 'fullyVaxPer10k'],
-                            '#FFEDA0',   // stop_output_0
+                            '#DEEBF7',   // stop_output_0
                             3500,          // stop_input_0
-                            '#FED976',   // stop_output_1
+                            '#C6DBEF',   // stop_output_1
                             4500,          // stop_input_1
-                            '#FEB24C',   // stop_output_2
+                            '#9ECAE1',   // stop_output_2
                             5000,          // stop_input_2
-                            '#FD8D3C',   // stop_output_3
+                            '#6BAED6',   // stop_output_3
                             5500,         // stop_input_3
-                            '#FC4E2A',   // stop_output_4
+                            '#4292C6',   // stop_output_4
                             6000,         // stop_input_4
-                            '#E31A1C',   // stop_output_5
+                            '#2171B5',   // stop_output_5
                             6500,         // stop_input_5
-                            '#BD0026',   // stop_output_6
+                            '#08519C',   // stop_output_6
                             7000,        // stop_input_6
-                            "#800026"    // stop_output_7
+                            "#08306B"    // stop_output_7
                             
                         ],
                         'fill-outline-color': '#BBBBBB',
-                        'fill-opacity': 0.7,
+                        'fill-opacity': 0.9,
                     }
                 });
             const layers = [
-                '0-9',
-                '10-19',
-                '20-49',
-                '50-99',
-                '100-199',
-                '200-499',
-                '500-999',
-                '1000 and more'
+                '3500',
+                '4500',
+                '5000',
+                '5500',
+                '6000',
+                '6500',
+                '7000',
+                '7000 and more'
             ];
             const colors = [
-                '#FFEDA070',
-                '#FED97670',
-                '#FEB24C70',
-                '#FD8D3C70',
-                '#FC4E2A70',
-                '#E31A1C70',
-                '#BD002670',
-                '#80002670'
+                '#DEEBF790',
+                '#C6DBEF90',
+                '#9ECAE190',
+                '#6BAED690',
+                '#4292C690',
+                '#2171B590',
+                '#08519C90',
+                '#08306B90'
             ];
 
             const legend = document.getElementById('legend');
-            legend.innerHTML = "<b>Full Vaccinated Rate<br>(people/sq.mi.)</b><br><br>";
+            legend.innerHTML = "<b>Full Vaccinated Rate<br>(Per 10k people)</b><br><br>";
 
             layers.forEach((layer, i) => {
                 const color = colors[i];
@@ -177,7 +177,7 @@ const map = new mapboxgl.Map({
                     layers: ['lab4data-layer']
                 });
                 document.getElementById('text-description').innerHTML = county.length ?
-                    `<h3>${county[0].properties.name}</h3><p><strong><em>${county[0].properties.fullyVaxPer10k}</strong> people per square mile</em></p>` :
+                    `<h3>${county[0].properties.name}</h3><p><strong><em>${county[0].properties.fullyVaxPer10k}</strong> Per 10k people in the county</em></p>` :
                     `<p>Hover over a county!</p>`;
             });
 
