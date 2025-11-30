@@ -92,8 +92,7 @@ const map = new mapboxgl.Map({
         style: 'mapbox://styles/mapbox/light-v11', // style URL
         zoom: 6, // starting zoom
         center: [-120, 47] // starting center
-    }
-);
+    });
 
         async function geojsonFetch() { 
             let response = await fetch('assets/wa-covid-data-102521.geojson');
